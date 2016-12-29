@@ -1,3 +1,7 @@
+// jshint esversion: 6
+
+const _404 = require('./_404');
+const _helium = require('./_helium');
 const net = require('net');
 
 let server = net.createServer(function(socket) {
