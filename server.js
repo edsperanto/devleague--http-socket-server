@@ -1,6 +1,7 @@
 const net = require('net');
 
 let server = net.createServer(function(socket) {
+	socket.setEncoding('utf8');
 	socket.on('data', (chunk) => {
 		console.log(chunk);
 	})
