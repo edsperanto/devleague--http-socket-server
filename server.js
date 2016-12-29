@@ -5,7 +5,9 @@ let server = net.createServer(function(socket) {
 	socket.on('data', (chunk) => {
 		console.log(chunk);
     socket.write('<html><head><title>TESTING</title></head><body</body></html>');
-	})
+    socket.end();
+    socket.destroy();
+	});
 });
 
 server.listen(8080, '0.0.0.0', function() {
