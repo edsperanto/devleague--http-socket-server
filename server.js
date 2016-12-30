@@ -22,7 +22,7 @@ Content-Type: text/html; charset=utf-8
 Connection: keep-alive
 X-Powered-By: Express`;
   return str;
-}
+};
 
 let server = net.createServer(function(socket) {
 	socket.setEncoding('utf8');
