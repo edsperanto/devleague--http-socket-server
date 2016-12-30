@@ -17,24 +17,27 @@ let server = net.createServer(function(socket) {
     let request = line[0].split(' ');
     console.log(request);
     if (request[0] === 'GET'){
+      let responseHeader = `${_httpheader}\n\n`;
       switch (request[1]){
         case '/':
         case '/index.html':
-          socket.write(`${_httpheader}\n${_index}`);
+          responseHeader += `${_index}`;
           break;
         case '/hydrogen.html':
-          socket.write(`${_httpheader}\n${_hydrogen}`);
+          responseHeader += `${_hydrogen}`;
           break;
-        case 'helium.html':
-          socket.write(`${_httpheader}\n${_helium}`);
+        case '/helium.html':
+          responseHeader += `${_helium}`;
           break;
-        case '404.html':
-          socket.write(`${_httpheader}\n${_404}`);
+        case '/404.html':
+          responseHeader += `${_404}`;
           break;
         case '/css/styles.css':
-          socket.write(`${_httpheader}\n${_styles}`);
+          responseHeader += `${_styles}`;
           break;
       }
+      console.log(responseHeader);
+      socket.write(responseHeader);
     }
     socket.end();
     socket.destroy();
