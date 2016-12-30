@@ -18,24 +18,19 @@ let server = net.createServer(function(socket) {
       switch (request[1]){
         case '/':
         case '/index.html':
-          socket.write(_httpheader);
-          socket.write(_index);
+          socket.write(`${_httpheader}\n${_index}`);
           break;
         case '/hydrogen.html':
-          socket.write(_httpheader);
-          socket.write(_hydrogen);
+          socket.write(`${_httpheader}\n${_hydrogen}`);
           break;
         case 'helium.html':
-          socket.write(_httpheader);
-          socket.write(_helium);
+          socket.write(`${_httpheader}\n${_helium}`);
           break;
         case '404.html':
-          socket.write(_httpheader);
-          socket.write(_404);
+          socket.write(`${_httpheader}\n${_404}`);
           break;
         case '/css/styles.css':
-          socket.write(_httpheader);
-          socket.write(_styles);
+          socket.write(`${_httpheader}\n${_styles}`);
           break;
       }
     }

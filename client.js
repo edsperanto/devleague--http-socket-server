@@ -3,13 +3,18 @@
 const net = require('net');
 
 let client = net.createConnection(8080, 'localhost');
+client.setEncoding('utf8');
 client.on('connect', () => {
   console.log('connected');
   process.stdin.pipe(client);
-  client.write('HEAD / HTTP/1.1\nHost: localhost:8080\nUser-Agent: curl/7.51.0\nAccept: *');
+  client.write(`GET / HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+Cache-Control: no-cache
+Postman-Token: 3072a901-9099-6bbb-e8c6-edde158f5c5a`);
 
 });
 
 client.on('data', function (chunk) {
-  process.stdout.write(chunk);
+  console.log(chunk);
 });
