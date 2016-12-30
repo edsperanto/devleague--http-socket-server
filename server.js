@@ -11,14 +11,13 @@ const net = require('net');
 let server = net.createServer(function(socket) {
 	socket.setEncoding('utf8');
 	socket.on('data', (chunk) => {
-    console.log(chunk);
-    let line = chunk.split('\n');
-    console.log(line);
-    let request = line[0].split(' ');
-    console.log(request);
-    if (request[0] === 'GET'){
+    let arrayOfLines = chunk.split('\n');
+    let arrayOfFirstLine = arrayOfLines[0].split(' ');
+    let httpRequestType = arrayOfFirstLine[0];
+    let httpRequestURI = arrayOfFirstLine[1];
+    if (httpRequestType === 'GET'){
       let responseHeader = `${_httpheader}\n\n`;
-      switch (request[1]){
+      switch (httpRequestURI){
         case '/':
         case '/index.html':
           responseHeader += `${_index}`;
@@ -36,7 +35,6 @@ let server = net.createServer(function(socket) {
           responseHeader += `${_styles}`;
           break;
       }
-      console.log(responseHeader);
       socket.write(responseHeader);
     }
     socket.end();
