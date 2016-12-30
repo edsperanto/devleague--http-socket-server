@@ -50,6 +50,8 @@ let server = net.createServer(function(socket) {
         case '/css/styles.css':
           responseHeader += `${_styles}`;
           break;
+        default:
+          responseHeader += `${_404}`;
       }
       socket.write(responseHeader);
     }
