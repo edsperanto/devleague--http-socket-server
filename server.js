@@ -2,9 +2,9 @@
 
 const _404 = require('./_404');
 const _helium = require('./_helium');
-const _hydrogen = require('./hydrogen');
-const _index = require('./index');
-const _styles = require('./styles');
+const _hydrogen = require('./_hydrogen');
+const _index = require('./_index');
+const _styles = require('./_styles');
 const net = require('net');
 
 let server = net.createServer(function(socket) {
