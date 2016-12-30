@@ -11,7 +11,7 @@ let server = net.createServer(function(socket) {
 	socket.setEncoding('utf8');
 	socket.on('data', (chunk) => {
 		console.log(chunk);
-    socket.write('<html><head><title>TESTING</title></head><body</body></html>');
+    socket.write(_404);
     socket.end();
     socket.destroy();
 	});
